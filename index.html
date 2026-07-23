@@ -5,32 +5,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Hridasha Joshi — AI/ML Engineer</title>
 <meta name="description" content="Hridasha Joshi — Software & AI/ML Engineer specializing in Generative AI, Computer Vision and production ML systems." />
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='24' r='11' fill='none' stroke='%2334D399' stroke-width='2'/%3E%3Cpath d='M20 21C20 10 30 6 34 6 34 14 28 21 20 21Z' fill='%23F5A623'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<canvas id="fireflies"></canvas>
+<div class="blueprint-grid" aria-hidden="true"></div>
 
-<div class="grain"></div>
+<!-- shared defs: logo mark + diagram arrowhead -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-mark" viewBox="0 0 40 40">
+      <circle cx="20" cy="24" r="11" fill="none" stroke="currentColor" stroke-width="2" opacity=".55"/>
+      <path d="M20 21C20 10 30 6 34 6C34 14 28 21 20 21Z" fill="currentColor"/>
+    </symbol>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="flow-arrow"/>
+    </marker>
+  </defs>
+</svg>
 
 <header class="nav" id="nav">
   <a href="#top" class="logo">
-    <span class="logo-mark">◭</span>
-    <span class="logo-text">hridasha<span class="dot">.</span>dev</span>
+    <svg class="logo-mark" viewBox="0 0 40 40" width="20" height="20"><use href="#i-mark"/></svg>
+    <span class="logo-text">hridasha_joshi</span>
   </a>
   <nav class="nav-links" id="navLinks">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#highlights">Highlights</a>
-    <a href="#contact">Contact</a>
+    <a href="#telemetry">telemetry</a>
+    <a href="#stack">stack</a>
+    <a href="#systems">systems</a>
+    <a href="#experience">log</a>
+    <a href="#contact">contact</a>
   </nav>
-  <a class="resume-btn" href="assets/Hridasha_Joshi_Resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
+  <a class="resume-btn" href="assets/Hridasha_Joshi_Resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
   <button class="burger" id="burger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
 </header>
 
@@ -38,335 +48,518 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-inner">
-      <p class="eyebrow">// software & ai/ml engineer</p>
-      <h1>Hi, I'm <span class="grad">Hridasha Joshi.</span></h1>
-      <p class="hero-sub">
-        I build production-grade AI systems — <span class="hl">Generative AI</span>,
-        <span class="hl">RAG pipelines</span> and <span class="hl">Computer Vision</span> —
-        with the same patience it takes to grow a garden and the same care it takes to
-        pull a good shot of espresso.
-      </p>
-      <div class="hero-badges">
-        <span class="badge">🧠 AI/ML Engineer</span>
-        <span class="badge">🌿 Nature Lover</span>
-        <span class="badge">☕ Coffee Enthusiast</span>
+    <div class="terminal hero-anim" style="--d:0">
+      <div class="term-bar">
+        <div class="term-dots"><span></span><span></span><span></span></div>
+        <span class="term-title">~/hridasha-joshi/portfolio --status=active</span>
       </div>
-      <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">See my work</a>
-        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      <div class="term-body">
+        <p class="prompt-line hero-anim" style="--d:1"><span class="prompt-sym">$</span> whoami &mdash; Software &amp; AI/ML Engineer, Sigma Solve Inc.</p>
+        <h1 class="hero-h1 hero-anim" style="--d:2">I build <span class="hl">RAG pipelines</span>, fine-tune <span class="hl-amber">LLMs</span> on Azure OpenAI, and ship <span class="hl">real-time computer vision</span> systems &mdash; running in production, not just notebooks.<span class="cursor"></span></h1>
+        <p class="hero-sub hero-anim" style="--d:3">
+          Generative AI and Computer Vision engineer building RAG systems, fine-tuning pipelines and
+          real-time vision models &mdash; wired into Django/Celery backends and shipped through
+          multi-stage GitLab CI/CD, not left in a notebook.
+        </p>
+        <div class="hero-cta hero-anim" style="--d:4">
+          <a href="https://github.com/" target="_blank" rel="noopener" class="btn btn-primary">View GitHub ↗</a>
+          <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        </div>
+        <div class="hero-social hero-anim" style="--d:5">
+          <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+          <span class="sep">·</span>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+          <span class="sep">·</span>
+          <a href="mailto:hridashajoshi@gmail.com">Email</a>
+        </div>
+        <p class="edit-note">* swap in your GitHub / LinkedIn URLs above once you share them</p>
       </div>
-      <div class="hero-social">
-        <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
-        <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
-        <a href="mailto:hridashajoshi@gmail.com" aria-label="Email">Email</a>
-      </div>
-      <p class="edit-note">* update GitHub / LinkedIn links in index.html once you share them</p>
     </div>
-    <div class="scroll-cue"><span></span>scroll</div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="section">
-    <p class="section-tag">01 · about</p>
-    <h2 class="section-title">Rooted in code, grounded in nature.</h2>
-    <div class="about-grid reveal">
-      <p class="about-text">
-        I'm an AI/ML Engineer specializing in building production-ready AI solutions across
-        <strong>Generative AI</strong> and <strong>Computer Vision</strong>. I've built LLM-based
-        applications using RAG for intelligent retrieval and response generation, real-time computer
-        vision systems, and end-to-end fine-tuning pipelines — all with a strong focus on scalable,
-        high-performance systems that hold up in production, not just in a notebook.
-        <br /><br />
-        Away from the terminal, I recharge the way most things grow best — slowly, outdoors, with
-        good light and a strong cup of coffee nearby. That same patience shows up in how I work:
-        I'd rather understand a problem properly and build the right-sized solution than reach for
-        the trendiest framework — which is exactly why I once evaluated LangChain/LangGraph for a
-        project and chose <em>not</em> to adopt it, with the reasoning documented for the team.
-      </p>
-      <div class="about-stats">
-        <div class="stat">
-          <span class="stat-num">8.22</span>
-          <span class="stat-label">CGPA · B.Tech ICT</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">80+</span>
-          <span class="stat-label">tests written in one project cycle</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">1</span>
-          <span class="stat-label">query replacing N/week (Salesforce)</span>
-        </div>
+  <!-- TELEMETRY -->
+  <section id="telemetry" class="section">
+    <p class="section-tag">01_telemetry.json</p>
+    <h2 class="section-title">System telemetry.</h2>
+    <p class="section-lede">
+      AI/ML Engineer specializing in production Generative AI and Computer Vision at Sigma Solve &mdash;
+      RAG systems, fine-tuned LLMs and real-time vision models built to survive contact with real
+      users, not just live in a notebook.
+    </p>
+    <div class="telemetry-grid reveal">
+      <div class="tele-tile">
+        <span class="tele-num">07</span>
+        <span class="tele-label">production AI/ML systems designed &amp; shipped</span>
+      </div>
+      <div class="tele-tile">
+        <span class="tele-num">80+</span>
+        <span class="tele-label">unit &amp; integration tests across GitLab CI/CD</span>
+      </div>
+      <div class="tele-tile">
+        <span class="tele-num">35</span>
+        <span class="tele-label">real-time pose classes recognized &amp; corrected</span>
+      </div>
+      <div class="tele-tile">
+        <span class="tele-num">N&rarr;1</span>
+        <span class="tele-label">per-record Salesforce queries collapsed to one bulk call/week</span>
       </div>
     </div>
+    <p class="edit-note"># note: I'd rather understand a problem properly than reach for the trendiest framework.</p>
+  </section>
+
+  <!-- COMPUTE MATRIX -->
+  <section id="stack" class="section">
+    <p class="section-tag">02_compute_matrix.yaml</p>
+    <h2 class="section-title">The compute layer.</h2>
+    <p class="section-lede">Stack, grouped by system level &mdash; from model frameworks down to the infra that serves them.</p>
+    <div class="matrix-table reveal">
+      <div class="matrix-row">
+        <div class="matrix-key">AI / LLM ENGINEERING</div>
+        <div class="matrix-val"><span>RAG</span><span>Azure OpenAI</span><span>Fine-tuning Pipelines</span><span>Prompt Engineering</span><span>LangChain</span><span>LangGraph</span><span>LangServe</span><span>LlamaIndex</span></div>
+      </div>
+      <div class="matrix-row">
+        <div class="matrix-key">ML / COMPUTER VISION</div>
+        <div class="matrix-val"><span>TensorFlow</span><span>PyTorch</span><span>OpenCV</span><span>Image Segmentation</span><span>Real-time Video Processing</span><span>NLP</span><span>Model Training &amp; Eval</span><span>Feature Engineering</span></div>
+      </div>
+      <div class="matrix-row">
+        <div class="matrix-key">BACKEND &amp; INFRASTRUCTURE</div>
+        <div class="matrix-val"><span>Django</span><span>FastAPI</span><span>REST APIs</span><span>Celery &amp; Celery Beat</span><span>GitLab CI/CD</span><span>Docker</span><span>Jenkins</span><span>RabbitMQ</span><span>Git</span></div>
+      </div>
+      <div class="matrix-row">
+        <div class="matrix-key">DATA &amp; DATABASES</div>
+        <div class="matrix-val"><span>Pandas</span><span>NumPy</span><span>Seaborn</span><span>Matplotlib</span><span>SQL</span><span>PostgreSQL</span><span>MongoDB</span></div>
+      </div>
+      <div class="matrix-row">
+        <div class="matrix-key">INTEGRATIONS &amp; AUTOMATION</div>
+        <div class="matrix-val"><span>Salesforce (SOQL, JWT)</span><span>Odoo</span><span>Crawlee</span><span>Web Scraping</span></div>
+      </div>
+      <div class="matrix-row">
+        <div class="matrix-key">TESTING &amp; QUALITY</div>
+        <div class="matrix-val"><span>Unit &amp; Integration Testing</span><span>Mocking</span><span>SonarQube Remediation</span><span>CI Debugging</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIPELINE ARTIFACTS -->
+  <section id="systems" class="section">
+    <p class="section-tag">03_pipeline_artifacts/</p>
+    <h2 class="section-title">Systems I've built.</h2>
+    <p class="section-lede">Four production pipelines, shown as they run &mdash; ingestion through inference &mdash; not as UI screenshots.</p>
+
+    <div class="pipeline-grid reveal">
+
+      <!-- PIPELINE 01 -->
+      <article class="pipeline-card">
+        <div class="pl-head">
+          <div>
+            <span class="pl-id">PIPELINE_01</span>
+            <h3>Race Video Intelligence</h3>
+          </div>
+          <span class="pl-role">computer vision · built from scratch</span>
+        </div>
+        <div class="pl-body">
+          <div class="pl-diagram-pane">
+            <div class="pl-tabs">
+              <button class="pl-tab active" data-target="p1-diagram">Diagram</button>
+              <button class="pl-tab" data-target="p1-snippet">Snippet</button>
+            </div>
+            <div class="pl-pane active" id="p1-diagram">
+              <svg class="pl-diagram" viewBox="0 0 480 90" preserveAspectRatio="xMidYMid meet">
+                <rect class="stage" x="8" y="20" width="104" height="50"/>
+                <text class="stage-label" x="60" y="42" text-anchor="middle">INGEST</text>
+                <text x="60" y="57" text-anchor="middle">frame stream</text>
+                <path class="flow" d="M112,45 L128,45" marker-end="url(#arrow)"/>
+
+                <rect class="stage" x="128" y="20" width="104" height="50"/>
+                <text class="stage-label" x="180" y="42" text-anchor="middle">SEGMENT</text>
+                <text x="180" y="57" text-anchor="middle">YOLO masks</text>
+                <path class="flow" d="M232,45 L248,45" marker-end="url(#arrow)"/>
+
+                <rect class="stage" x="248" y="20" width="104" height="50"/>
+                <text class="stage-label" x="300" y="42" text-anchor="middle">ANALYZE</text>
+                <text x="300" y="57" text-anchor="middle">overlap · tracking</text>
+                <path class="flow" d="M352,45 L368,45" marker-end="url(#arrow)"/>
+
+                <rect class="stage" x="368" y="20" width="104" height="50"/>
+                <text class="stage-label" x="420" y="42" text-anchor="middle">EVENTS</text>
+                <text x="420" y="57" text-anchor="middle">flag · alert</text>
+              </svg>
+            </div>
+            <div class="pl-pane" id="p1-snippet">
+              <p class="pl-snippet-label">race_intel/pipeline.py</p>
+              <pre class="language-python"><code class="language-python">model = YOLO("track_seg.pt")
+
+for frame in stream.read(skip=cfg.frame_skip):
+    masks = model.predict(frame, classes=TRACK_CLASSES)
+    overlap = mask_overlap(masks.car, masks.track_limit)
+
+    if overlap > cfg.violation_thresh:
+        events.flag("track_limit_violation", frame.ts)
+
+    tracker.update(masks.car)  # multi-frame overtake tracking
+    if tracker.detect_overtake():
+        events.flag("overtake", frame.ts)</code></pre>
+            </div>
+          </div>
+          <div class="pl-code-pane">
+            <p class="pl-snippet-label">what it does</p>
+            <ul style="display:flex;flex-direction:column;gap:9px;">
+              <li style="font-size:.87rem;color:var(--text-dim);">YOLO-based segmentation of cars, track, curbs and walls, plus view-type classification.</li>
+              <li style="font-size:.87rem;color:var(--text-dim);">Detects crashes, collisions and pit stops; proximity alerts and track-limit violations via mask-overlap analysis.</li>
+              <li style="font-size:.87rem;color:var(--text-dim);">Multi-frame overtake tracking and HSV/Hough-Circle start-light detection, optimized with frame-skipping and parallel processing.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pl-spec">
+          <span><b>TECHNIQUE</b> YOLO segmentation</span>
+          <span><b>TRACKING</b> multi-frame overtake detection</span>
+          <span><b>OPTIMIZATION</b> frame-skipping + parallel processing</span>
+        </div>
+      </article>
+
+      <!-- PIPELINE 02 -->
+      <article class="pipeline-card">
+        <div class="pl-head">
+          <div>
+            <span class="pl-id">PIPELINE_02</span>
+            <h3>Email Intelligence &amp; Prioritization</h3>
+          </div>
+          <span class="pl-role">NLP · inbox automation</span>
+        </div>
+        <div class="pl-body">
+          <div class="pl-diagram-pane">
+            <div class="pl-tabs">
+              <button class="pl-tab active" data-target="p2-diagram">Diagram</button>
+              <button class="pl-tab" data-target="p2-snippet">Snippet</button>
+            </div>
+            <div class="pl-pane active" id="p2-diagram">
+              <svg class="pl-diagram" viewBox="0 0 480 90" preserveAspectRatio="xMidYMid meet">
+                <rect class="stage" x="8" y="20" width="104" height="50"/>
+                <text class="stage-label" x="60" y="42" text-anchor="middle">INGEST</text>
+                <text x="60" y="57" text-anchor="middle">email + attachments</text>
+                <path class="flow" d="M112,45 L128,45" marker-end="url(#arrow)"/>
+
+                <rect class="stage" x="128" y="20" width="104" height="50"/>
+                <text class="stage-label" x="180" y="42" text-anchor="middle">EXTRACT</text>
+                <text x="180" y="57" text-anchor="middle">parse PDF / XLS</text>
+                <path class="flow" d="M232,45 L248,45" marker-end="url(#arrow)"/>
+
+                <rect class="stage" x="248" y="20" width="104" height="50"/>
+                <text class="stage-label" x="300" y="42" text-anchor="middle">CLASSIFY</text>
+                <text x="300" y="57" text-anchor="middle">DistilBERT</text>
+                <path class="flow" d="M352,45 L368,45" marker-end="url(#arrow)"/>
+
+                <rect class="stage" x="368" y="20" width="104" height="50"/>
+                <text class="stage-label" x="420" y="42" text-anchor="middle">FLAG</text>
+                <text x="420" y="57" text-anchor="middle">colour-coded</text>
+              </svg>
+            </div>
+            <div class="pl-pane" id="p2-snippet">
+              <p class="pl-snippet-label">email_intel/classify.py</p>
+              <pre class="language-python"><code class="language-python">tokens = tokenizer(email.body, truncation=True, return_tensors="pt")
+logits = distilbert(**tokens).logits
+priority = PRIORITY_LABELS[logits.argmax(-1)]
+
+if priority == "high" and sender in vip_accounts:
+    client.flag(email.id, color="red")
+elif matches_hot_seller(email, catalog):
+    client.flag(email.id, color="amber")</code></pre>
+            </div>
+          </div>
+          <div class="pl-code-pane">
+            <p class="pl-snippet-label">what it does</p>
+            <ul style="display:flex;flex-direction:column;gap:9px;">
+              <li style="font-size:.87rem;color:var(--text-dim);">Trained DistilBERT for email analysis and prioritization; parses emails, PDF attachments and Excel files for business-critical info.</li>
+              <li style="font-size:.87rem;color:var(--text-dim);">Flags priority customers, hot sellers and in-stock items against business guidelines with automated colour-coded flagging in the email client.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pl-spec">
+          <span><b>MODEL</b> DistilBERT</span>
+          <span><b>INPUT</b> email body · PDF · Excel</span>
+          <span><b>OUTPUT</b> colour-coded priority flags</span>
+        </div>
+      </article>
+
+      <!-- PIPELINE 03 -->
+      <article class="pipeline-card">
+        <div class="pl-head">
+          <div>
+            <span class="pl-id">PIPELINE_03</span>
+            <h3>Emotion-Aware Avatar Generation</h3>
+          </div>
+          <span class="pl-role">multimodal · emotion &rarr; avatar</span>
+        </div>
+        <div class="pl-body">
+          <div class="pl-diagram-pane">
+            <div class="pl-tabs">
+              <button class="pl-tab active" data-target="p3-diagram">Diagram</button>
+              <button class="pl-tab" data-target="p3-snippet">Snippet</button>
+            </div>
+            <div class="pl-pane active" id="p3-diagram">
+              <svg class="pl-diagram" viewBox="0 0 480 90" preserveAspectRatio="xMidYMid meet">
+                <rect class="stage" x="8" y="20" width="104" height="50"/>
+                <text class="stage-label" x="60" y="42" text-anchor="middle">CAPTURE</text>
+                <text x="60" y="57" text-anchor="middle">text + face</text>
+                <path class="flow" d="M112,45 L128,45" marker-end="url(#arrow)"/>
+
+                <rect class="stage" x="128" y="20" width="104" height="50"/>
+                <text class="stage-label" x="180" y="42" text-anchor="middle">FUSE</text>
+                <text x="180" y="57" text-anchor="middle">emotion fusion</text>
+                <path class="flow" d="M232,45 L248,45" marker-end="url(#arrow)"/>
+
+                <rect class="stage" x="248" y="20" width="104" height="50"/>
+                <text class="stage-label" x="300" y="42" text-anchor="middle">GENERATE</text>
+                <text x="300" y="57" text-anchor="middle">LightX avatar</text>
+                <path class="flow" d="M352,45 L368,45" marker-end="url(#arrow)"/>
+
+                <rect class="stage" x="368" y="20" width="104" height="50"/>
+                <text class="stage-label" x="420" y="42" text-anchor="middle">SYNC</text>
+                <text x="420" y="57" text-anchor="middle">MuseTalk lip-sync</text>
+              </svg>
+            </div>
+            <div class="pl-pane" id="p3-snippet">
+              <p class="pl-snippet-label">avatar/emotion_pipeline.py</p>
+              <pre class="language-python"><code class="language-python">text_emotion = roberta_go_emotions(transcript)
+face_emotion = detect_face_emotion(frame)
+emotion = fuse(text_emotion, face_emotion, weights=cfg.fusion_weights)
+
+avatar = lightx.generate(emotion=emotion, identity=user.avatar_id)
+speaking_avatar = musetalk.lip_sync(avatar, audio=tts_audio)</code></pre>
+            </div>
+          </div>
+          <div class="pl-code-pane">
+            <p class="pl-snippet-label">what it does</p>
+            <ul style="display:flex;flex-direction:column;gap:9px;">
+              <li style="font-size:.87rem;color:var(--text-dim);">Researched text-emotion detection with XLM-RoBERTa Large (Go Emotions V3) and facial-expression detection to map user emotion.</li>
+              <li style="font-size:.87rem;color:var(--text-dim);">Integrated LightX for emotion-driven avatar generation and MuseTalk for lip-synced speaking avatars; explored WebRTC for real-time streaming.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pl-spec">
+          <span><b>MODELS</b> XLM-RoBERTa · LightX · MuseTalk</span>
+          <span><b>STREAMING</b> WebRTC (explored)</span>
+        </div>
+      </article>
+
+      <!-- PIPELINE 04 -->
+      <article class="pipeline-card">
+        <div class="pl-head">
+          <div>
+            <span class="pl-id">PIPELINE_04</span>
+            <h3>LLM Personality Fine-tuning</h3>
+          </div>
+          <span class="pl-role">LLM engineering · trait classification</span>
+        </div>
+        <div class="pl-body">
+          <div class="pl-diagram-pane">
+            <div class="pl-tabs">
+              <button class="pl-tab active" data-target="p4-diagram">Diagram</button>
+              <button class="pl-tab" data-target="p4-snippet">Snippet</button>
+            </div>
+            <div class="pl-pane active" id="p4-diagram">
+              <svg class="pl-diagram" viewBox="0 0 480 90" preserveAspectRatio="xMidYMid meet">
+                <rect class="stage" x="8" y="20" width="104" height="50"/>
+                <text class="stage-label" x="60" y="42" text-anchor="middle">DATASET</text>
+                <text x="60" y="57" text-anchor="middle">prep + split</text>
+                <path class="flow" d="M112,45 L128,45" marker-end="url(#arrow)"/>
+
+                <rect class="stage" x="128" y="20" width="104" height="50"/>
+                <text class="stage-label" x="180" y="42" text-anchor="middle">FINE-TUNE</text>
+                <text x="180" y="57" text-anchor="middle">supervised</text>
+                <path class="flow" d="M232,45 L248,45" marker-end="url(#arrow)"/>
+
+                <rect class="stage" x="248" y="20" width="104" height="50"/>
+                <text class="stage-label" x="300" y="42" text-anchor="middle">EVAL</text>
+                <text x="300" y="57" text-anchor="middle">F1 / accuracy</text>
+                <path class="flow" d="M352,45 L368,45" marker-end="url(#arrow)"/>
+
+                <rect class="stage" x="368" y="20" width="104" height="50"/>
+                <text class="stage-label" x="420" y="42" text-anchor="middle">CLASSIFY</text>
+                <text x="420" y="57" text-anchor="middle">openness trait</text>
+              </svg>
+            </div>
+            <div class="pl-pane" id="p4-snippet">
+              <p class="pl-snippet-label">personality_ft/train.py</p>
+              <pre class="language-python"><code class="language-python">model = AutoModelForSequenceClassification.from_pretrained(
+    base_model, num_labels=2  # openness: low / high
+)
+
+trainer = Trainer(
+    model=model, args=training_args,
+    train_dataset=openness_ds["train"],
+    eval_dataset=openness_ds["val"],
+    compute_metrics=compute_f1,
+)
+trainer.train()</code></pre>
+            </div>
+          </div>
+          <div class="pl-code-pane">
+            <p class="pl-snippet-label">what it does</p>
+            <ul style="display:flex;flex-direction:column;gap:9px;">
+              <li style="font-size:.87rem;color:var(--text-dim);">Fine-tuned LLMs to identify personality "openness" traits from user data and conversations.</li>
+              <li style="font-size:.87rem;color:var(--text-dim);">Iterated on dataset prep, model experimentation and evaluation to improve trait-classification accuracy.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pl-spec">
+          <span><b>TASK</b> openness-trait classification</span>
+          <span><b>METHOD</b> supervised fine-tuning</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- SYSTEM LOG -->
+  <section id="system-log" class="section">
+    <p class="section-tag">04_system_log.csv</p>
+    <h2 class="section-title">Additional systems.</h2>
+    <p class="section-lede">Everything else shipped &mdash; at Sigma Solve and independently.</p>
+    <div class="syslog-table reveal">
+      <div class="syslog-row">
+        <span class="syslog-no">01</span>
+        <span class="syslog-name">ai_motion_video_gen</span>
+        <span class="syslog-desc">Evaluated text-to-video platforms/models for AI-driven fitness content; pose-guided video-generation pipelines.</span>
+        <span class="syslog-stack">Sora · AnimateDiff · ControlVideo</span>
+      </div>
+      <div class="syslog-row">
+        <span class="syslog-no">02</span>
+        <span class="syslog-name">compliance_redflag</span>
+        <span class="syslog-desc">Rule-driven AI workflows automating compliance red-flag detection against business rules.</span>
+        <span class="syslog-stack">Rule Engines · Python</span>
+      </div>
+      <div class="syslog-row">
+        <span class="syslog-no">03</span>
+        <span class="syslog-name">ecommerce_sync</span>
+        <span class="syslog-desc">Real-time bi-directional Shopify ↔ Odoo sync for products, orders, inventory and customers.</span>
+        <span class="syslog-stack">Odoo · Shopify API</span>
+      </div>
+      <div class="syslog-row">
+        <span class="syslog-no">04</span>
+        <span class="syslog-name">moodytunes</span>
+        <span class="syslog-desc">Webcam-based real-time emotion detection feeding mood-matched song suggestions.</span>
+        <span class="syslog-stack">Python · Django · CV</span>
+      </div>
+      <div class="syslog-row">
+        <span class="syslog-no">05</span>
+        <span class="syslog-name">yoga_correction</span>
+        <span class="syslog-desc">Real-time recognition &amp; correction of 35 poses, with live speech guidance.</span>
+        <span class="syslog-stack">Python · OpenCV</span>
+      </div>
+      <div class="syslog-row">
+        <span class="syslog-no">06</span>
+        <span class="syslog-name">library_mgmt</span>
+        <span class="syslog-desc">Customized Odoo modules for cataloging and borrowing workflows.</span>
+        <span class="syslog-stack">Python · Odoo</span>
+      </div>
+      <div class="syslog-row">
+        <span class="syslog-no">07</span>
+        <span class="syslog-name">rto_monitoring</span>
+        <span class="syslog-desc">Document tracking system for an RTO office with secure login &amp; record-keeping.</span>
+        <span class="syslog-stack">Java · MySQL</span>
+      </div>
+    </div>
+    <p class="edit-note">* add live/GitHub links to each system once your repos are public</p>
   </section>
 
   <!-- EXPERIENCE -->
   <section id="experience" class="section">
-    <p class="section-tag">02 · experience</p>
-    <h2 class="section-title">Where I've grown.</h2>
+    <p class="section-tag">05_experience.log</p>
+    <h2 class="section-title">Where the work happened.</h2>
 
-    <div class="timeline">
+    <div class="explog reveal">
 
-      <div class="tl-item reveal">
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-head">
-            <h3>Software Engineer — Python &amp; AI/ML</h3>
-            <span class="tl-date">Apr 2025 — Present</span>
-          </div>
-          <p class="tl-company">Sigma Solve Inc., Ahmedabad · Full-time</p>
-          <ul>
-            <li>Design and build end-to-end ML, LLM and Computer Vision pipelines using OpenCV, TensorFlow and PyTorch, including RAG (Retrieval-Augmented Generation) systems for intelligent data retrieval and response generation.</li>
-            <li>Integrated <strong>Azure OpenAI</strong> for structured JSON output, designing prompts that cleanly separate system/user/assistant roles for reliable, parseable responses.</li>
-            <li>Designed an end-to-end <strong>fine-tuning pipeline</strong>: data capture → ground-truth reconciliation → taxonomy classification → JSONL export → Azure fine-tune job submission &amp; polling.</li>
-            <li>Built a mismatch-taxonomy system to catch and filter noisy/bad training data before it reached the model — a real ML data-quality safeguard, not just an API integration.</li>
-            <li>Evaluated an agentic-framework adoption (LangChain/LangGraph) and <strong>chose not to adopt it</strong>, documenting the technical reasoning for the team — judgment over reflexively adding complexity.</li>
-            <li>Optimized a <strong>Salesforce</strong> integration (SOQL, JWT auth), turning N per-record queries a week into a single bulk query.</li>
-            <li>Built backend services with Django (management commands, ORM, migrations, admin) and orchestrated periodic jobs with Celery &amp; Celery Beat, including the django-celery-beat DatabaseScheduler internals.</li>
-            <li>Shipped through multi-stage GitLab CI/CD pipelines; wrote 80+ unit &amp; integration tests, fixed pre-existing CI-breaking mock/implementation drift, and remediated SonarQube findings (cognitive complexity, dead code).</li>
-            <li>Traced a subtle data-integrity bug by cross-referencing live Salesforce records against local DB state, uncovering a case where valid classifications were being silently discarded.</li>
-            <li>Synthesized large sets of technical design docs into coherent implementation plans, and translated deep technical work into manager-facing status &amp; roadmap reports.</li>
-          </ul>
+      <div class="exp-item">
+        <div class="exp-head">
+          <h3>Software Engineer — Python &amp; AI/ML</h3>
+          <span class="exp-date">Apr 2025 — Present</span>
         </div>
+        <p class="exp-company">Sigma Solve Inc., Ahmedabad · Full-time</p>
+        <ul>
+          <li>Design and build end-to-end ML, LLM and Computer Vision pipelines — RAG systems, fine-tuned LLMs on Azure OpenAI, and real-time vision models.</li>
+          <li>Built backend services with Django and Celery/Celery Beat, shipped through multi-stage GitLab CI/CD with 80+ unit &amp; integration tests.</li>
+          <li>Optimized a Salesforce integration (SOQL, JWT auth), turning N per-record queries a week into a single bulk query.</li>
+          <li>Delivered seven applied AI systems spanning NLP, generative video, computer vision and compliance automation:</li>
+        </ul>
+        <ul class="exp-sublist">
+          <li><strong>Email Intelligence &amp; Prioritization</strong> — trained DistilBERT for email analysis and prioritization, with automated colour-coded flagging in the email client.</li>
+          <li><strong>Emotion-Aware Avatar Generation</strong> — text/facial emotion detection feeding LightX avatar generation and MuseTalk lip-sync.</li>
+          <li><strong>AI Motion &amp; Video Generation</strong> — evaluated text-to-video and motion-generation platforms/models for AI-driven fitness content.</li>
+          <li><strong>Race Video Intelligence</strong> — built a race-video analysis pipeline from scratch: YOLO segmentation, event detection, overtake tracking.</li>
+          <li><strong>E-commerce Sync Automation</strong> — real-time bi-directional Shopify ↔ Odoo sync for products, orders, inventory and customers.</li>
+          <li><strong>Compliance Red-Flag Automation</strong> — rule-driven AI workflows automating compliance red-flag detection.</li>
+          <li><strong>LLM Personality Fine-tuning</strong> — fine-tuned LLMs for personality "openness" trait classification.</li>
+        </ul>
       </div>
 
-      <div class="tl-item reveal">
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-head">
-            <h3>Python Developer (Trainee)</h3>
-            <span class="tl-date">Jan 2025 — Apr 2025</span>
-          </div>
-          <p class="tl-company">Sigma Solve Inc., Ahmedabad</p>
-          <ul>
-            <li>Built a Yoga Correction System using Django and computer vision under senior guidance.</li>
-            <li>System recognized and guided multiple yoga poses with real-time feedback.</li>
-            <li>Gained hands-on experience with Python, Django, and computer vision workflows.</li>
-          </ul>
+      <div class="exp-item">
+        <div class="exp-head">
+          <h3>Python Developer (Trainee)</h3>
+          <span class="exp-date">Jan 2025 — Apr 2025</span>
         </div>
+        <p class="exp-company">Sigma Solve Inc., Ahmedabad</p>
+        <ul>
+          <li>Built a Yoga Correction System using Django and computer vision under senior guidance.</li>
+          <li>System recognized and guided multiple yoga poses with real-time feedback.</li>
+          <li>Gained hands-on experience with Python, Django, and computer vision workflows.</li>
+        </ul>
       </div>
 
-      <div class="tl-item reveal">
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-head">
-            <h3>Odoo Intern</h3>
-            <span class="tl-date">May 2023 — Aug 2023</span>
-          </div>
-          <p class="tl-company">BeyondData Solutions Pvt. Ltd., Ahmedabad</p>
-          <ul>
-            <li>Developed and customized Odoo modules using Python for ERP solutions.</li>
-            <li>Assisted in backend development, data handling and system configuration.</li>
-            <li>Gained practical exposure to ERP workflows and client-driven development.</li>
-          </ul>
+      <div class="exp-item">
+        <div class="exp-head">
+          <h3>Odoo Intern</h3>
+          <span class="exp-date">May 2023 — Aug 2023</span>
         </div>
+        <p class="exp-company">BeyondData Solutions Pvt. Ltd., Ahmedabad</p>
+        <ul>
+          <li>Developed and customized Odoo modules using Python for ERP solutions.</li>
+          <li>Assisted in backend development, data handling and system configuration.</li>
+          <li>Gained practical exposure to ERP workflows and client-driven development.</li>
+        </ul>
       </div>
 
-    </div>
-  </section>
-
-  <!-- HIGHLIGHTS -->
-  <section id="highlights" class="section">
-    <p class="section-tag">03 · highlights</p>
-    <h2 class="section-title">Signal, not just stack.</h2>
-    <div class="highlight-grid reveal">
-      <div class="highlight-card">
-        <span class="hc-icon">🧪</span>
-        <h3>Fine-tuning, end to end</h3>
-        <p>Owned the full loop: data capture → ground-truth reconciliation → taxonomy classification → JSONL export → Azure fine-tune submission & polling.</p>
-      </div>
-      <div class="highlight-card">
-        <span class="hc-icon">🧭</span>
-        <h3>Said no on purpose</h3>
-        <p>Evaluated LangChain/LangGraph for a real project and rejected it with documented reasoning — complexity only when it earns its keep.</p>
-      </div>
-      <div class="highlight-card">
-        <span class="hc-icon">⚡</span>
-        <h3>N queries → 1</h3>
-        <p>Rebuilt a Salesforce integration around bulk SOQL queries instead of per-record calls, cutting a weekly job down to a single query.</p>
-      </div>
-      <div class="highlight-card">
-        <span class="hc-icon">🛡️</span>
-        <h3>Data quality by design</h3>
-        <p>Built a mismatch-taxonomy system that keeps noisy, low-quality data from ever reaching the training set.</p>
-      </div>
-      <div class="highlight-card">
-        <span class="hc-icon">✅</span>
-        <h3>80+ tests, real CI discipline</h3>
-        <p>Wrote extensive unit/integration tests with mocking, fixed pre-existing CI-breaking drift, and cleaned up SonarQube debt.</p>
-      </div>
-      <div class="highlight-card">
-        <span class="hc-icon">🔍</span>
-        <h3>Root-caused a silent data bug</h3>
-        <p>Cross-referenced live Salesforce records against local DB state to catch valid classifications being silently discarded.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="section">
-    <p class="section-tag">04 · projects</p>
-    <h2 class="section-title">Things I've built.</h2>
-    <div class="project-grid reveal">
-
-      <article class="project-card">
-        <div class="pc-top">
-          <span class="pc-icon">🎵</span>
-          <span class="pc-tags"><span>Python</span><span>Django</span><span>CV</span></span>
-        </div>
-        <h3>MoodyTunes</h3>
-        <p>A music web app that detects your emotion through the webcam in real time and suggests songs to match your mood.</p>
-      </article>
-
-      <article class="project-card">
-        <div class="pc-top">
-          <span class="pc-icon">🧘</span>
-          <span class="pc-tags"><span>Python</span><span>OpenCV</span></span>
-        </div>
-        <h3>Yoga Correction System</h3>
-        <p>Real-time yoga guidance system recognizing and correcting 35 poses, with live speech guidance to improve posture.</p>
-      </article>
-
-      <article class="project-card">
-        <div class="pc-top">
-          <span class="pc-icon">📚</span>
-          <span class="pc-tags"><span>Python</span><span>Odoo</span></span>
-        </div>
-        <h3>Library Management System</h3>
-        <p>Customized Odoo-based system that streamlines cataloging and borrowing with tailored modules for efficient resource management.</p>
-      </article>
-
-      <article class="project-card">
-        <div class="pc-top">
-          <span class="pc-icon">🚦</span>
-          <span class="pc-tags"><span>Java</span><span>MySQL</span></span>
-        </div>
-        <h3>RTO Monitoring System</h3>
-        <p>Document tracking system for an RTO office with a secure login system and organized record-keeping.</p>
-      </article>
-
-    </div>
-    <p class="edit-note">* add live/GitHub links to each card once your repos are public</p>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills" class="section">
-    <p class="section-tag">05 · skills</p>
-    <h2 class="section-title">What I reach for.</h2>
-    <div class="skills-grid reveal">
-
-      <div class="skill-group">
-        <h3>AI / LLM Engineering</h3>
-        <div class="chips">
-          <span>RAG</span><span>Azure OpenAI</span><span>Fine-tuning Pipelines</span>
-          <span>Prompt Engineering</span><span>LangChain</span><span>LangGraph</span>
-          <span>LangServe</span><span>LlamaIndex</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <h3>Machine Learning / Computer Vision</h3>
-        <div class="chips">
-          <span>TensorFlow</span><span>PyTorch</span><span>OpenCV</span>
-          <span>Image Segmentation</span><span>Real-time Video Processing</span>
-          <span>NLP</span><span>Model Training & Eval</span><span>Feature Engineering</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <h3>Backend & Infrastructure</h3>
-        <div class="chips">
-          <span>Django</span><span>FastAPI</span><span>REST APIs</span>
-          <span>Celery & Celery Beat</span><span>GitLab CI/CD</span><span>Docker</span>
-          <span>Jenkins</span><span>RabbitMQ</span><span>Git</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <h3>Data & Databases</h3>
-        <div class="chips">
-          <span>Pandas</span><span>NumPy</span><span>Seaborn</span><span>Matplotlib</span>
-          <span>SQL</span><span>PostgreSQL</span><span>MongoDB</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <h3>Integrations & Automation</h3>
-        <div class="chips">
-          <span>Salesforce (SOQL, JWT)</span><span>Odoo</span><span>Crawlee</span><span>Web Scraping</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <h3>Testing & Quality</h3>
-        <div class="chips">
-          <span>Unit & Integration Testing</span><span>Mocking</span><span>SonarQube Remediation</span><span>CI Debugging</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section id="education" class="section">
-    <p class="section-tag">06 · education</p>
-    <h2 class="section-title">Foundations.</h2>
-    <div class="edu-grid reveal">
-      <div class="edu-card">
-        <h3>B.Tech, Information & Communication Technology</h3>
-        <p class="edu-sub">Ganpat University, Ahmedabad · 2022 – 2025</p>
-        <p class="edu-score">8.22 CGPA</p>
-      </div>
-      <div class="edu-card">
-        <h3>Diploma in Engineering</h3>
-        <p class="edu-sub">Alpha College of Engineering & Technology, Gandhinagar (GTU) · 2019 – 2022</p>
-        <p class="edu-score">9.62 CGPA</p>
-      </div>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section id="contact" class="section contact-section">
-    <p class="section-tag">07 · contact</p>
-    <h2 class="section-title">Let's talk — over coffee, virtually or otherwise.</h2>
+    <p class="section-tag">06_contact.sh</p>
+    <h2 class="section-title">Let's talk.</h2>
     <p class="contact-sub">Open to AI/ML engineering roles and interesting problems. Reach out.</p>
-    <div class="contact-grid reveal">
-      <a class="contact-card" href="mailto:hridashajoshi@gmail.com">
-        <span class="cc-icon">✉️</span>
-        <span class="cc-label">Email</span>
-        <span class="cc-value">hridashajoshi@gmail.com</span>
+    <div class="contact-table reveal">
+      <a class="contact-row" href="mailto:hridashajoshi@gmail.com">
+        <span class="cr-label">EMAIL</span>
+        <span class="cr-value">hridashajoshi@gmail.com</span>
       </a>
-      <a class="contact-card" href="tel:+918849279020">
-        <span class="cc-icon">📞</span>
-        <span class="cc-label">Phone</span>
-        <span class="cc-value">+91 88492 79020</span>
+      <a class="contact-row" href="tel:+918849279020">
+        <span class="cr-label">PHONE</span>
+        <span class="cr-value">+91 88492 79020</span>
       </a>
-      <div class="contact-card static">
-        <span class="cc-icon">📍</span>
-        <span class="cc-label">Location</span>
-        <span class="cc-value">Ahmedabad, India</span>
+      <div class="contact-row">
+        <span class="cr-label">LOCATION</span>
+        <span class="cr-value">Ahmedabad, India</span>
       </div>
-      <a class="contact-card" href="https://github.com/" target="_blank" rel="noopener">
-        <span class="cc-icon">🐙</span>
-        <span class="cc-label">GitHub</span>
-        <span class="cc-value">update link</span>
+      <a class="contact-row" href="https://github.com/" target="_blank" rel="noopener">
+        <span class="cr-label">GITHUB</span>
+        <span class="cr-value">update link</span>
       </a>
-      <a class="contact-card" href="https://linkedin.com/" target="_blank" rel="noopener">
-        <span class="cc-icon">💼</span>
-        <span class="cc-label">LinkedIn</span>
-        <span class="cc-value">update link</span>
+      <a class="contact-row" href="https://linkedin.com/" target="_blank" rel="noopener">
+        <span class="cr-label">LINKEDIN</span>
+        <span class="cr-value">update link</span>
       </a>
     </div>
   </section>
 
+  <footer class="footer">
+    <p>$ echo "designed &amp; built by Hridasha Joshi"</p>
+    <p class="footer-year">© <span id="year"></span></p>
+  </footer>
+
 </main>
 
-<footer class="footer">
-  <p>Designed & built by Hridasha Joshi · brewed with ☕ and grown with 🌿</p>
-  <p class="footer-year">© <span id="year"></span></p>
-</footer>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
