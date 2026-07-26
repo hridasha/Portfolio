@@ -617,4 +617,14 @@ button.contact-row:first-child{ border-top:none; }
   .section-lede{ margin-bottom: 22px; font-size:.88rem; }
   .filter-tabs{ gap: 7px; margin-bottom: 20px; }
   .filter-tab{ padding: 6px 12px; font-size:.72rem; }
+
+  /* experience: tighter rhythm, same bullets */
+  .exp-item{ padding: 0 0 26px 20px; }
+  .exp-head{ gap: 4px 12px; }
+  .exp-head h3{ font-size:.92rem; }
+  .exp-company{ margin-top:3px; margin-bottom: 10px; font-size:.8rem; }
+  .exp-item ul{ gap:7px; }
+  .exp-item li{ padding-left: 15px; font-size:.83rem; line-height:1.45; }
+  .exp-sublist{ margin: -2px 0 4px 16px !important; padding-left: 12px; gap: 6px !important; }
+  .exp-sublist li{ font-size:.77rem !important; }
 }
