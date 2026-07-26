@@ -562,7 +562,7 @@ button.contact-row:first-child{ border-top:none; }
   .syslog-row{ grid-template-columns: 1fr; gap:4px; text-align:left; }
   .syslog-stack{ text-align:left; }
   .hero-grid{ grid-template-columns: 1fr; gap: 64px; }
-  .hero-term-wrap{ order: -1; max-width: 560px; }
+  .hero-term-wrap{ max-width: 560px; }
 }
 @media (max-width: 860px){
   .nav-links{
@@ -587,4 +587,18 @@ button.contact-row:first-child{ border-top:none; }
   .hero-float-badge{ font-size:.62rem; padding:5px 9px; }
   .hero-float-top{ top:-12px; right:14px; }
   .hero-float-bottom{ bottom:-12px; right:14px; }
+
+  /* shorten the hero terminal to its two most useful lines */
+  .hero-term-body p:nth-child(3),
+  .hero-term-body p:nth-child(4),
+  .hero-term-body p:nth-child(5),
+  .hero-term-body p:nth-child(6){ display:none; }
+
+  /* skills: compact wrapping chips instead of stacked per-line list */
+  .skill-list{ flex-direction:row; flex-wrap:wrap; gap:8px; }
+  .skill-list li{
+    background: var(--bg-inset); border:1px solid var(--grid-line);
+    padding:5px 11px; border-radius: 999px; font-size:.72rem;
+  }
+  .skill-dot{ display:none; }
 }
