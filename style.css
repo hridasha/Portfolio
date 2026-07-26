@@ -575,9 +575,8 @@ button.contact-row:first-child{ border-top:none; }
   }
   .nav-links.open{ transform: translateY(0); }
   .nav-links a{ padding: 14px 0; border-bottom: 1px solid var(--grid-line); }
-  .nav-resume-mobile{ display:block; color: var(--accent); font-weight:600; }
   .burger{ display:flex; }
-  .resume-btn{ display:none; }
+  .resume-btn{ padding: 6px 10px; font-size: .68rem; }
   .nav-controls{ display:none; }
 }
 @media (max-width: 500px){
@@ -590,6 +589,8 @@ button.contact-row:first-child{ border-top:none; }
   .hero-float-top{ top:-12px; right:14px; }
   .hero-float-bottom{ bottom:-12px; right:14px; }
 }
+
+.exp-sublist-toggle{ display:none; }
 
 /* ---------- COMPACT CARDS (skills + projects) ---------- */
 @media (max-width: 700px){
@@ -629,4 +630,14 @@ button.contact-row:first-child{ border-top:none; }
   .exp-item li{ padding-left: 15px; font-size:.83rem; line-height:1.45; }
   .exp-sublist{ margin: -2px 0 4px 16px !important; padding-left: 12px; gap: 6px !important; }
   .exp-sublist li{ font-size:.77rem !important; }
+
+  /* collapse the long shipped-systems list to 3 items by default */
+  .exp-sublist:not(.expanded) li:nth-child(n+4){ display:none; }
+  .exp-sublist-toggle{
+    display:flex; align-items:center; gap:6px; margin: 6px 0 0 16px;
+    font-family: var(--ff-mono); font-size:.74rem; color: var(--accent);
+    background:none; border:none; padding:0; cursor:pointer;
+  }
+  .exp-sublist-toggle-arrow{ display:inline-block; transition: transform .2s ease; }
+  .exp-sublist-toggle.open .exp-sublist-toggle-arrow{ transform: rotate(180deg); }
 }

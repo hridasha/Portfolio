@@ -156,6 +156,16 @@ if (countEls.length) {
   countEls.forEach(el => countIo.observe(el));
 }
 
+// ---- experience sub-list expand/collapse (mobile) ----
+document.querySelectorAll('[data-sublist-toggle]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const list = btn.previousElementSibling;
+    const open = list.classList.toggle('expanded');
+    btn.classList.toggle('open', open);
+    btn.firstChild.textContent = open ? 'Show fewer ' : 'Show all 7 ';
+  });
+});
+
 // ---- systems filter tabs ----
 const filterTabs = document.querySelectorAll('.filter-tab');
 const pipelineCards = document.querySelectorAll('.pipeline-card');
