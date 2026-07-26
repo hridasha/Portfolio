@@ -3,7 +3,6 @@
 Static site (plain HTML/CSS/JS, no build step) — deploy it anywhere that serves static files.
 
 ## Before you deploy
-- Update the GitHub / LinkedIn URLs in `index.html` (search for `github.com/` and `linkedin.com/`, marked with `* update link` notes).
 - Swap `assets/Hridasha_Joshi_Resume.pdf` if you update your resume — keep the filename or update the link in `index.html`.
 
 ## Deploy — pick one
