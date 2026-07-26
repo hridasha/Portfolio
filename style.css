@@ -564,6 +564,7 @@ button.contact-row:first-child{ border-top:none; }
   .hero-grid{ grid-template-columns: 1fr; }
   .hero-term-wrap{ display: none; }
 }
+.nav-resume-mobile{ display:none; }
 @media (max-width: 860px){
   .nav-links{
     position:fixed; top:60px; right: 0; left:0;
@@ -574,6 +575,7 @@ button.contact-row:first-child{ border-top:none; }
   }
   .nav-links.open{ transform: translateY(0); }
   .nav-links a{ padding: 14px 0; border-bottom: 1px solid var(--grid-line); }
+  .nav-resume-mobile{ display:block; color: var(--accent); font-weight:600; }
   .burger{ display:flex; }
   .resume-btn{ display:none; }
   .nav-controls{ display:none; }
