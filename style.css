@@ -587,12 +587,34 @@ button.contact-row:first-child{ border-top:none; }
   .hero-float-badge{ font-size:.62rem; padding:5px 9px; }
   .hero-float-top{ top:-12px; right:14px; }
   .hero-float-bottom{ bottom:-12px; right:14px; }
+}
 
+/* ---------- COMPACT CARDS (skills + projects) ---------- */
+@media (max-width: 700px){
   /* skills: compact wrapping chips instead of stacked per-line list */
-  .skill-list{ flex-direction:row; flex-wrap:wrap; gap:8px; }
+  .skill-grid{ gap: 12px; }
+  .skill-card{ padding: 14px 16px; }
+  .skill-head{ padding-bottom: 10px; margin-bottom: 10px; gap:9px; }
+  .skill-icon{ width:28px; height:28px; }
+  .skill-icon svg{ width:15px; height:15px; }
+  .skill-list{ flex-direction:row; flex-wrap:wrap; gap:7px; }
   .skill-list li{
     background: var(--bg-inset); border:1px solid var(--grid-line);
     padding:5px 11px; border-radius: 999px; font-size:.72rem;
   }
   .skill-dot{ display:none; }
+
+  /* projects: tighter card padding, no content removed */
+  .pipeline-grid{ gap: 14px; }
+  .pl-head{ padding: 14px 16px 0; }
+  .pl-summary{ padding: 8px 16px 0; line-height:1.45; }
+  .pl-tags{ padding: 10px 16px 0; }
+  .pl-tags span{ padding: 2px 7px; }
+  .pl-view{ padding: 12px 16px 14px; }
+
+  /* section chrome (header block + filter tabs): tighter, same text */
+  .sec-head{ margin-bottom: 14px; }
+  .section-lede{ margin-bottom: 22px; font-size:.88rem; }
+  .filter-tabs{ gap: 7px; margin-bottom: 20px; }
+  .filter-tab{ padding: 6px 12px; font-size:.72rem; }
 }
