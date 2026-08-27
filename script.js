@@ -51,7 +51,7 @@ if (!prefersReducedMotion) {
     const current = roles[titleRoleIndex];
     if (!titleDeleting) {
       titleCharIndex++;
-      document.title = `${baseTitle} — ${current.slice(0, titleCharIndex)}`;
+      document.title = `${baseTitle} - ${current.slice(0, titleCharIndex)}`;
       if (titleCharIndex === current.length) {
         titleDeleting = true;
         setTimeout(titleTick, TITLE_HOLD_MS);
@@ -60,7 +60,7 @@ if (!prefersReducedMotion) {
       setTimeout(titleTick, TITLE_TYPE_MS);
     } else {
       titleCharIndex--;
-      document.title = `${baseTitle} — ${current.slice(0, titleCharIndex)}`;
+      document.title = `${baseTitle} - ${current.slice(0, titleCharIndex)}`;
       if (titleCharIndex === 0) {
         titleDeleting = false;
         titleRoleIndex = (titleRoleIndex + 1) % roles.length;
@@ -91,10 +91,14 @@ scrollTopBtn.addEventListener('click', () => {
 });
 
 burger.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
+  const open = navLinks.classList.toggle('open');
+  burger.setAttribute('aria-expanded', String(open));
 });
 navLinks.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => navLinks.classList.remove('open'));
+  a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+  });
 });
 
 // ---- nav active-section highlight ----
@@ -124,47 +128,6 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-// ---- count-up telemetry stats ----
-const countEls = document.querySelectorAll('.tele-num[data-count]');
-function animateCount(el) {
-  const target = parseInt(el.dataset.count, 10);
-  const suffix = el.dataset.suffix || '';
-  if (prefersReducedMotion) {
-    el.textContent = target + suffix;
-    return;
-  }
-  const duration = 900;
-  const start = performance.now();
-  function step(now) {
-    const progress = Math.min((now - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.round(target * eased) + suffix;
-    if (progress < 1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}
-if (countEls.length) {
-  const countIo = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        animateCount(e.target);
-        countIo.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.4 });
-  countEls.forEach(el => countIo.observe(el));
-}
-
-// ---- experience sub-list expand/collapse (mobile) ----
-document.querySelectorAll('[data-sublist-toggle]').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const list = btn.previousElementSibling;
-    const open = list.classList.toggle('expanded');
-    btn.classList.toggle('open', open);
-    btn.firstChild.textContent = open ? 'Show fewer ' : 'Show all 7 ';
-  });
-});
 
 // ---- systems filter tabs ----
 const filterTabs = document.querySelectorAll('.filter-tab');
@@ -267,7 +230,7 @@ document.querySelectorAll('.copy-btn').forEach(btn => {
         btn.classList.remove('copied');
       }, 1500);
     } catch (err) {
-      /* clipboard unavailable — mailto/tel link still works as fallback */
+      /* clipboard unavailable - mailto/tel link still works as fallback */
     }
   });
 });
@@ -292,14 +255,14 @@ contactForm.addEventListener('submit', async (e) => {
     });
     const data = await res.json();
     if (data.success) {
-      formMsg.textContent = "Message sent — thanks, I'll get back to you soon.";
+      formMsg.textContent = "Message sent. I'll get back to you soon.";
       formMsg.classList.add('success');
       contactForm.reset();
     } else {
       throw new Error(data.message || 'Send failed');
     }
   } catch (err) {
-    formMsg.textContent = 'Could not send — try emailing directly instead.';
+    formMsg.textContent = 'Could not send. Try emailing directly instead.';
     formMsg.classList.add('error');
   } finally {
     submitBtn.disabled = false;
