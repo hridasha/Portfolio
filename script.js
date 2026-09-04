@@ -3,9 +3,15 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+// ---- splash screen cleanup ----
+const splashScreen = document.getElementById('splashScreen');
+if (splashScreen) {
+  splashScreen.addEventListener('animationend', () => splashScreen.remove());
+}
+
 // ---- hero role cycler (typewriter) ----
 const roleCycler = document.getElementById('roleCycler');
-const roles = ['AI/ML Engineer', 'RAG Systems Builder', 'Computer Vision Engineer', 'LLM Fine-tuner'];
+const roles = ['AI/ML Engineer', 'RAG Systems Builder', 'Computer Vision Engineer'];
 
 if (roleCycler) {
   if (prefersReducedMotion) {
@@ -187,7 +193,7 @@ pipelineCards.forEach(card => {
     }
   });
 });
-projectModal.querySelectorAll('[data-modal-close]').forEach(t => t.addEventListener('click', (e) => {
+[projectModal, ...projectModal.querySelectorAll('[data-modal-close]')].forEach(t => t.addEventListener('click', (e) => {
   if (e.target === e.currentTarget || e.target.classList.contains('modal-close')) closeProjectModal();
 }));
 document.addEventListener('keydown', (e) => {
@@ -208,7 +214,7 @@ function closeContactModal() {
   document.body.style.overflow = '';
 }
 document.querySelectorAll('[data-modal-open]').forEach(t => t.addEventListener('click', openContactModal));
-contactModal.querySelectorAll('[data-modal-close]').forEach(t => t.addEventListener('click', (e) => {
+[contactModal, ...contactModal.querySelectorAll('[data-modal-close]')].forEach(t => t.addEventListener('click', (e) => {
   if (e.target === e.currentTarget || e.target.classList.contains('modal-close')) closeContactModal();
 }));
 document.addEventListener('keydown', (e) => {
@@ -269,3 +275,315 @@ contactForm.addEventListener('submit', async (e) => {
     submitBtn.textContent = 'Send message';
   }
 });
+
+// ---- AI agent widget (rule-based FAQ bot, fully client-side) ----
+(function () {
+  const toggle = document.getElementById('agentToggle');
+  const panel = document.getElementById('agentPanel');
+  const body = document.getElementById('agentBody');
+  const quick = document.getElementById('agentQuick');
+  const form = document.getElementById('agentForm');
+  const input = document.getElementById('agentInput');
+  const badge = document.getElementById('agentBadge');
+  const closeBtn = document.getElementById('agentCloseBtn');
+  if (!toggle || !panel) return;
+
+  const faqs = [
+    {
+      id: 'skills',
+      keywords: ['skill', 'stack', 'tech', 'tool', 'language', 'framework', 'expertise', 'technologies'],
+      answer: "I work across four layers: core Machine Learning (model training & evaluation, feature engineering, TensorFlow/PyTorch), Generative AI & LLM engineering (RAG, LangChain, LangGraph, Azure OpenAI), Computer Vision (OpenCV, real-time video, segmentation), and backend engineering (Django, FastAPI). Not just GenAI or CV, there's plenty of classical ML mixed in too.",
+      link: { href: '#stack', label: 'View skills ↓' }
+    },
+    {
+      id: 'experience',
+      keywords: ['experience', 'work history', 'job', 'career', 'company', 'employer', 'background', 'role'],
+      answer: "Currently an AI/ML Engineer building production RAG pipelines, fine-tuned LLMs and computer vision systems. Before that: Python developer (trainee), and an ERP intern working on Odoo.",
+      link: { href: '#experience', label: 'View experience ↓' }
+    },
+    {
+      id: 'years_experience',
+      keywords: ['years of experience', 'how long have you', 'how experienced', 'how many years'],
+      answer: "Working professionally since April 2025 as an AI/ML Engineer. Full timeline's in the Experience section.",
+      link: { href: '#experience', label: 'View experience ↓' }
+    },
+    {
+      id: 'projects',
+      keywords: ['project', 'built', 'shipped', 'portfolio', 'apps', 'systems'],
+      answer: "I've shipped seven systems on the job, from an email-prioritization NLP model to a race-video computer vision pipeline, plus personal projects like MoodyTunes and PaperGraph.",
+      link: { href: '#systems', label: 'View projects ↓' }
+    },
+    {
+      id: 'resume',
+      keywords: ['resume', 'cv', 'download'],
+      answer: "Here you go.",
+      link: { href: 'resume.html', label: 'Download resume ↗', external: true }
+    },
+    {
+      id: 'contact',
+      keywords: ['contact', 'hire', 'reach', 'email', 'connect', 'linkedin', 'github', 'talk', 'get in touch'],
+      answer: "Best way is the contact form, or email me directly at hridashajoshi@gmail.com.",
+      link: { href: '#contact', label: 'Go to contact ↓' }
+    },
+    {
+      id: 'availability',
+      keywords: ['available', 'availability', 'open to work', 'looking for', 'opportunities', 'freelance'],
+      answer: "Open to AI/ML engineering roles and interesting problems. Best way to follow up is the Contact section.",
+      link: { href: '#contact', label: 'Go to contact ↓' }
+    },
+    {
+      id: 'salary',
+      keywords: ['salary', 'compensation', 'pay range', 'rate', 'cost to hire'],
+      answer: "That's a conversation for a real inbox, not a chatbot. Reach out directly and we can talk specifics.",
+      link: { href: '#contact', label: 'Go to contact ↓' }
+    },
+    {
+      id: 'location',
+      keywords: ['location', 'based', 'where are you', 'city', 'live', 'remote'],
+      answer: "Based in Ahmedabad, India."
+    },
+    {
+      id: 'education',
+      keywords: ['education', 'degree', 'college', 'university', 'study', 'school'],
+      answer: "B.Tech in Information & Communication Technology from Ganpat University (2022–2025), CGPA 8.22."
+    },
+    {
+      id: 'about',
+      keywords: ['who are you', 'about you', 'who is hridasha', 'introduce', 'yourself'],
+      answer: "I'm an AI/ML Engineer working across Machine Learning, Generative AI and Computer Vision, from raw data to a trained model to something actually running in production.",
+      link: { href: '#telemetry', label: 'Read more ↓' }
+    },
+    {
+      id: 'philosophy',
+      keywords: ['philosophy', 'approach', 'principle', 'mindset', 'belief'],
+      answer: '"I\'d rather understand a problem properly than reach for the trendiest framework."'
+    },
+    {
+      id: 'greeting',
+      keywords: ['hi', 'hello', 'hey', 'yo', 'howdy', 'sup'],
+      answer: "Hello!! I know this site inside out. Ask me about skills, experience, projects, resume, or how to get in touch."
+    },
+    {
+      id: 'thanks',
+      keywords: ['thanks', 'thank you', 'cheers'],
+      answer: "Anytime! Anything else you want to know?"
+    }
+  ];
+
+  const fallback = "I don't have a canned answer for that one. Try asking about skills, experience, projects, resume, or contact.";
+
+  function levenshtein(a, b) {
+    const m = a.length, n = b.length;
+    if (!m) return n;
+    if (!n) return m;
+    let prev = Array.from({ length: n + 1 }, (_, j) => j);
+    for (let i = 1; i <= m; i++) {
+      const row = [i];
+      for (let j = 1; j <= n; j++) {
+        row[j] = a[i - 1] === b[j - 1]
+          ? prev[j - 1]
+          : 1 + Math.min(prev[j - 1], prev[j], row[j - 1]);
+      }
+      prev = row;
+    }
+    return prev[n];
+  }
+
+  function normalize(text) {
+    return text.toLowerCase().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+  }
+
+  function scoreFaq(faq, norm, words) {
+    let score = 0;
+    for (const keyword of faq.keywords) {
+      if (norm.includes(keyword)) { score += 2; continue; }
+      if (keyword.includes(' ')) continue;
+      for (const word of words) {
+        if (word.length < 4 || keyword.length < 4) continue;
+        const threshold = keyword.length <= 5 ? 1 : 2;
+        if (levenshtein(word, keyword) <= threshold) { score += 1; break; }
+      }
+    }
+    return score;
+  }
+
+  const quickReplies = [
+    { label: 'Skills', text: 'skills', color: 'var(--accent-blue)' },
+    { label: 'Experience', text: 'experience', color: 'var(--accent-amber)' },
+    { label: 'Projects', text: 'projects', color: 'var(--accent)' },
+    { label: 'Resume', text: 'resume', color: 'var(--accent-cyan)' },
+    { label: 'Contact', text: 'contact', color: 'var(--accent-magenta)' }
+  ];
+
+  const greeting = "Hello!! I know this site inside out. Ask about skills, experience, projects, resume, or how to reach me.";
+
+  let opened = false;
+
+  function scrollToBottom() {
+    body.scrollTop = body.scrollHeight;
+  }
+
+  function appendMessage(text, sender, link) {
+    const msg = document.createElement('div');
+    msg.className = 'agent-msg agent-msg-' + sender;
+    msg.textContent = text;
+    const isInternalLink = link && link.href.startsWith('#');
+    if (link && !(isInternalLink && isMobileAgent())) {
+      msg.appendChild(document.createElement('br'));
+      const a = document.createElement('a');
+      a.href = link.href;
+      a.className = 'agent-link';
+      a.textContent = link.label;
+      if (link.external) { a.target = '_blank'; a.rel = 'noopener'; }
+      msg.appendChild(a);
+    }
+    body.appendChild(msg);
+    scrollToBottom();
+  }
+
+  function showTyping() {
+    const typing = document.createElement('div');
+    typing.className = 'agent-typing';
+    typing.id = 'agentTypingIndicator';
+    typing.innerHTML = '<span></span><span></span><span></span>';
+    body.appendChild(typing);
+    scrollToBottom();
+  }
+
+  function hideTyping() {
+    const typing = document.getElementById('agentTypingIndicator');
+    if (typing) typing.remove();
+  }
+
+  function findFaq(text) {
+    const norm = normalize(text);
+    const words = norm.split(' ').filter(Boolean);
+    let best = null, bestScore = 0;
+    for (const faq of faqs) {
+      const score = scoreFaq(faq, norm, words);
+      if (score > bestScore) { bestScore = score; best = faq; }
+    }
+    return bestScore > 0 ? best : null;
+  }
+
+  const detailAnswers = {
+    projects: {
+      text: "On the job: email-prioritization NLP, an emotion-aware avatar generator, generative video/motion research, a race-video computer vision pipeline, real-time Shopify-to-Odoo sync, compliance red-flag automation, and an LLM-based sales-role classifier. On my own time: MoodyTunes, a yoga pose corrector, drowsiness detection, PaperGraph, and a LangGraph browser-automation agent.",
+      link: { href: '#systems', label: 'View projects ↓' }
+    },
+    experience: {
+      text: "Day to day: RAG pipelines and fine-tuned LLMs on Azure OpenAI (LangChain, LangGraph, LlamaIndex), classical ML and deep learning in TensorFlow/PyTorch (BERT and DistilBERT for NLP), real-time computer vision with YOLO and OpenCV, backend services in Django and FastAPI shipped through GitLab CI/CD, and integrations across Salesforce, Shopify and Odoo.",
+      link: { href: '#experience', label: 'View experience ↓' }
+    },
+    skills: {
+      text: "Grouped into six areas on the site: LLM/GenAI engineering, core Machine Learning, backend services, infrastructure, data tooling, and integrations, over a dozen tools deep in ML alone (TensorFlow, PyTorch, scikit-learn, XGBoost, OpenCV, MediaPipe, DeepFace...).",
+      link: { href: '#stack', label: 'View skills ↓' }
+    },
+    about: {
+      text: "\"I'd rather understand a problem properly than reach for the trendiest framework.\" That's the operating principle, plus a habit of following a problem from raw data to a trained model to something actually deployed.",
+      link: { href: '#telemetry', label: 'Read more ↓' }
+    }
+  };
+
+  const moreDetailKeywords = ['more detail', 'more details', 'elaborate', 'tell me more', 'expand', 'give more', 'go deeper', 'more info'];
+
+  function isMoreDetailRequest(norm) {
+    return moreDetailKeywords.some(k => norm.includes(k));
+  }
+
+  let lastTopic = null;
+  let botQueue = Promise.resolve();
+  let pendingBotMessages = 0;
+  const sendBtn = form.querySelector('.agent-send');
+  const inputPlaceholder = input.placeholder;
+
+  function setInputLocked(locked) {
+    input.disabled = locked;
+    sendBtn.disabled = locked;
+    input.placeholder = locked ? 'agent is typing...' : inputPlaceholder;
+    quick.querySelectorAll('button').forEach(b => { b.disabled = locked; });
+  }
+
+  function queueBotMessage(getContent, delay) {
+    pendingBotMessages++;
+    setInputLocked(true);
+    botQueue = botQueue.then(() => new Promise(resolve => {
+      showTyping();
+      setTimeout(() => {
+        hideTyping();
+        const { text, link } = getContent();
+        appendMessage(text, 'bot', link);
+        pendingBotMessages--;
+        if (pendingBotMessages === 0) setInputLocked(false);
+        resolve();
+      }, delay);
+    }));
+    return botQueue;
+  }
+
+  function respond(userText) {
+    if (input.disabled) return;
+    appendMessage(userText, 'user');
+    queueBotMessage(() => {
+      const norm = normalize(userText);
+      if (isMoreDetailRequest(norm) && lastTopic && detailAnswers[lastTopic]) {
+        return detailAnswers[lastTopic];
+      }
+      const faq = findFaq(userText);
+      if (faq) {
+        lastTopic = faq.id;
+        return { text: faq.answer, link: faq.link };
+      }
+      return { text: fallback };
+    }, 500 + Math.random() * 300);
+  }
+
+  quickReplies.forEach(q => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.textContent = q.label;
+    btn.style.setProperty('--chip-color', q.color);
+    btn.addEventListener('click', () => respond(q.text));
+    quick.appendChild(btn);
+  });
+
+  const isMobileAgent = () => window.matchMedia('(max-width: 500px)').matches;
+
+  function openPanel() {
+    opened = true;
+    toggle.classList.add('open');
+    toggle.setAttribute('aria-expanded', 'true');
+    panel.classList.add('open');
+    badge.classList.add('hidden');
+    if (isMobileAgent()) document.body.style.overflow = 'hidden';
+    if (!body.hasChildNodes()) {
+      queueBotMessage(() => ({ text: greeting }), 550);
+    }
+    setTimeout(() => input.focus(), 200);
+  }
+
+  function closePanel() {
+    opened = false;
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    panel.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  toggle.addEventListener('click', () => {
+    if (opened) closePanel(); else openPanel();
+  });
+  if (closeBtn) closeBtn.addEventListener('click', (e) => { e.stopPropagation(); closePanel(); });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    input.value = '';
+    respond(text);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && opened) closePanel();
+  });
+})();

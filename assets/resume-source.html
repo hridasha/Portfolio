@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Hridasha Joshi - Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  @page { size: Letter; margin: 0.55in 0.6in; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{
+    font-family:'Lato', Arial, sans-serif;
+    color:#1a1d23;
+    font-size:10.5pt;
+    line-height:1.45;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  a{ color:#1e40af; text-decoration:none; }
+
+  .header{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    padding-bottom:14px; margin-bottom:12px;
+    border-bottom:2px solid #1e40af;
+  }
+  .header h1{ font-size:22pt; font-weight:900; letter-spacing:.01em; color:#111318; }
+  .header .role{ font-size:10.5pt; font-weight:700; letter-spacing:.06em; color:#3a4152; margin-top:3px; text-transform:uppercase; }
+  .contact{ text-align:right; font-size:9pt; color:#3a4152; }
+  .contact div{ display:flex; align-items:center; justify-content:flex-end; gap:6px; margin-bottom:4px; white-space:nowrap; }
+  .contact a{ display:flex; align-items:center; gap:6px; color:#1e40af; }
+  .contact svg{ flex-shrink:0; color:#6b7280; }
+  .contact a svg{ color:#1e40af; }
+
+  section{ margin-bottom:13px; }
+  h2{
+    font-size:10.5pt; font-weight:900; letter-spacing:.05em; color:#1e40af;
+    text-transform:uppercase;
+    padding-bottom:3px; margin-bottom:8px;
+    border-bottom:1px solid #c7d5f5;
+    break-after: avoid; page-break-after: avoid;
+  }
+
+  .summary{ color:#2c3140; }
+
+  .job{ margin-bottom:11px; break-inside: avoid; page-break-inside: avoid; }
+  .job:last-child{ margin-bottom:0; }
+  .job-head{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
+  .job-head h3{ font-size:10.5pt; font-weight:700; color:#111318; }
+  .job-date{ font-size:9pt; color:#6b7280; white-space:nowrap; font-weight:700; }
+  .job-company{ font-size:9.5pt; font-weight:700; color:#3a4152; margin-top:1px; margin-bottom:5px; }
+  ul.bullets{ list-style:none; }
+  ul.bullets li{ position:relative; padding-left:13px; margin-bottom:3px; color:#2c3140; break-inside: avoid; page-break-inside: avoid; }
+  ul.bullets li::before{ content:"▪"; position:absolute; left:0; top:0; font-size:7pt; color:#1e40af; }
+
+  .projects{ break-inside: avoid; page-break-inside: avoid; }
+  .projects li{ margin-bottom:5px; }
+  .projects b{ color:#111318; }
+  .projects .stack{ color:#3a4152; font-weight:700; }
+
+  .skills-row{ margin-bottom:4px; }
+  .skills-row b{ color:#111318; }
+
+  .edu-head{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; break-inside: avoid; page-break-inside: avoid; }
+  .edu-head h3{ font-size:10.5pt; font-weight:700; color:#111318; }
+  .edu-date{ font-size:9pt; color:#6b7280; font-weight:700; white-space:nowrap; }
+  .edu-sub{ font-size:9.5pt; font-weight:700; color:#3a4152; margin-top:1px; }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div>
+      <h1>Hridasha Joshi</h1>
+      <div class="role">Software &amp; AI/ML Engineer</div>
+    </div>
+    <div class="contact">
+      <div>
+        <a href="tel:+918849279020">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +91 88492 79020
+        </a>
+      </div>
+      <div>
+        <a href="mailto:hridashajoshi@gmail.com">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          hridashajoshi@gmail.com
+        </a>
+      </div>
+      <div>
+        <a href="https://hridasha.github.io/Portfolio/" target="_blank">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Portfolio
+        </a>
+      </div>
+      <div>
+        <a href="https://www.linkedin.com/in/hridasha-joshi-94265426a/" target="_blank">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4v15h-4V8zM8.5 8h3.83v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V23h-4v-6.93c0-1.65-.03-3.77-2.3-3.77-2.3 0-2.65 1.8-2.65 3.65V23h-4V8z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+      <div>
+        <a href="https://github.com/hridasha" target="_blank">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48A10.02 10.02 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <div>
+        <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Ahmedabad, India
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <h2>Professional Summary</h2>
+    <p class="summary">AI/ML Engineer with hands-on production experience across Machine Learning, Generative AI and
+      Computer Vision: training and fine-tuning models, building RAG pipelines on Azure OpenAI, and shipping
+      real-time vision systems into production. At Sigma Solve, deliver applied AI systems end-to-end, from
+      model to backend (Django/FastAPI) to CI/CD, with a focus on understanding a problem properly before
+      reaching for a framework.</p>
+  </section>
+
+  <section>
+    <h2>Professional Experience</h2>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>Software Engineer - Python &amp; AI/ML</h3>
+        <span class="job-date">Apr 2025 - Present</span>
+      </div>
+      <div class="job-company">Sigma Solve Inc., Ahmedabad · Full-time</div>
+      <ul class="bullets">
+        <li>Built production RAG pipelines and fine-tuned LLMs on Azure OpenAI using LangChain, LangGraph and LlamaIndex.</li>
+        <li>Worked on Machine Learning, Deep Learning and NLP: model training, evaluation and fine-tuning with TensorFlow, PyTorch, BERT and DistilBERT.</li>
+        <li>Built real-time Computer Vision applications with YOLO and OpenCV, and explored generative video and AI avatar/motion-generation technologies.</li>
+        <li>Developed backend services with Django, FastAPI, Celery/Celery Beat, Docker and RabbitMQ, deployed through GitLab CI/CD.</li>
+        <li>Integrated Salesforce (SOQL, JWT auth), Shopify and Odoo via REST APIs, with automated data collection using Crawlee.</li>
+        <li>Used Pandas, NumPy, SQL/PostgreSQL and MongoDB for data processing, with Git-based version control and Agile practices.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>Python Developer (Trainee)</h3>
+        <span class="job-date">Jan 2025 - Apr 2025</span>
+      </div>
+      <div class="job-company">Sigma Solve Inc., Ahmedabad</div>
+      <ul class="bullets">
+        <li>Built a Yoga Correction System using Django and computer vision under senior guidance.</li>
+        <li>Delivered real-time pose recognition and feedback across multiple yoga poses.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>Odoo Intern</h3>
+        <span class="job-date">May 2023 - Aug 2023</span>
+      </div>
+      <div class="job-company">BeyondData Solutions Pvt. Ltd., Ahmedabad</div>
+      <ul class="bullets">
+        <li>Developed and customized Odoo modules using Python for ERP solutions.</li>
+        <li>Assisted in backend development, data handling and system configuration.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+    <ul class="bullets projects">
+      <li><b>MoodyTunes</b> <span class="stack">(Python, Django)</span>: Music platform with webcam and text-based mood detection, collaborative playlists, mood analytics, and full Spotify integration for search, import and playback.</li>
+      <li><b>Yoga Correction System</b> <span class="stack">(Python, Django, FastAPI, MediaPipe)</span>: Pose correction combining a Django app with a FastAPI real-time service, using MediaPipe landmarks and a trained model for angle-based feedback from a photo or live webcam.</li>
+      <li><b>Drowsiness Detection</b> <span class="stack">(Python, FastAPI, MediaPipe)</span>: Real-time drowsiness and yawn detection via webcam, using MediaPipe face tracking with a live dashboard and escalating alerts.</li>
+      <li><b>PaperGraph</b> <span class="stack">(Python, FastAPI, LLM, D3.js)</span>: Turns research papers into a queryable knowledge graph, extracting concept relationships with an LLM and answering questions over the graph.</li>
+      <li><b>Browser Automation Agent</b> <span class="stack">(Python, LangGraph, Playwright)</span>: Multi-agent LangGraph workflow that turns a plain-English goal into web research, browsing with Playwright and extracting structured data via an LLM.</li>
+      <li><b>Library Management System</b> <span class="stack">(Python, Odoo)</span>: Customized Odoo modules for cataloging and borrowing workflows.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Technical Skills</h2>
+    <div class="skills-row"><b>Generative AI / LLMs:</b> LangChain, LangGraph, LangServe, LlamaIndex, RAG, Prompt Engineering, Azure OpenAI, Fine-tuning</div>
+    <div class="skills-row"><b>Machine Learning / Computer Vision:</b> TensorFlow, PyTorch, scikit-learn, XGBoost/LightGBM, OpenCV, MediaPipe, DeepFace, Image Segmentation, Real-time Video, NLP, Model Training &amp; Evaluation</div>
+    <div class="skills-row"><b>Backend &amp; APIs:</b> Django, FastAPI, REST APIs, Celery &amp; Celery Beat</div>
+    <div class="skills-row"><b>Data:</b> Pandas, NumPy, Seaborn, Matplotlib, SQL, PostgreSQL, MongoDB</div>
+    <div class="skills-row"><b>Infrastructure:</b> GitLab CI/CD, Docker, RabbitMQ, Git</div>
+    <div class="skills-row"><b>Integrations &amp; Automation:</b> Salesforce, Odoo, Crawlee, Playwright, Web Scraping</div>
+    <div class="skills-row"><b>Soft Skills:</b> Communication, Problem Solving, Time Management, Teamwork</div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="edu-head">
+      <h3>B.Tech, Information &amp; Communication Technology</h3>
+      <span class="edu-date">2022 - 2025</span>
+    </div>
+    <div class="edu-sub">Ganpat University, Ahmedabad · CGPA 8.22</div>
+  </section>
+
+</body>
+</html>

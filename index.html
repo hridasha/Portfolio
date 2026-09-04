@@ -4,14 +4,25 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Hridasha Joshi - AI/ML Engineer</title>
-<meta name="description" content="Hridasha Joshi - Software & AI/ML Engineer specializing in Generative AI, Computer Vision and production ML systems." />
+<meta name="description" content="Hridasha Joshi - Software & AI/ML Engineer specializing in Machine Learning, Generative AI and Computer Vision, building production AI systems." />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='24' r='11' fill='none' stroke='%2334D399' stroke-width='2'/%3E%3Cpath d='M20 21C20 10 30 6 34 6 34 14 28 21 20 21Z' fill='%23F5A623'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css" />
+<!-- Cloudflare Web Analytics -->
+<script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ad9ea9fe39fd41fe897943c0507e60fb"}'></script>
+<!-- End Cloudflare Web Analytics -->
 </head>
 <body>
+
+<div class="splash-screen" id="splashScreen" aria-hidden="true">
+  <div class="splash-box">
+    <p class="splash-line"><span class="splash-prompt">$</span>booting hridasha.sh</p>
+    <p class="splash-line splash-line-2"><span class="splash-prompt">$</span>starting ai_pipeline.service</p>
+    <p class="splash-line splash-line-3"><span class="splash-ok">[ok]</span>ready<span class="splash-cursor"></span></p>
+  </div>
+</div>
 
 <div class="blueprint-grid" aria-hidden="true"></div>
 <div class="scanline" aria-hidden="true"></div>
@@ -41,7 +52,7 @@
     <a href="#systems" data-section="systems">projects</a>
     <a href="#contact" data-section="contact">contact</a>
   </nav>
-  <a class="resume-btn" href="assets/Hridasha_Joshi_Resume.pdf?v=2" target="_blank" rel="noopener">Resume ↗</a>
+  <a class="resume-btn" href="resume.html" target="_blank" rel="noopener">Resume ↗</a>
   <div class="term-dots nav-controls" aria-hidden="true"><span></span><span></span><span></span></div>
   <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </header>
@@ -59,8 +70,8 @@
           <span class="hero-role" id="roleCycler"></span><span class="hero-role-cursor"></span>
         </div>
         <p class="hero-sub hero-anim" style="--d:3">
-          I build production AI systems across Generative AI and Computer Vision: RAG pipelines,
-          fine-tuned LLMs, and real-time vision models that hold up outside the notebook.
+          I build AI that has to survive outside a notebook, across Machine Learning, Generative AI and
+          Computer Vision: trained models, fine-tuned LLMs, RAG pipelines, and real-time vision systems.
         </p>
         <p class="hero-tagline hero-anim" style="--d:4">Systems that learn, and tend the things that grow.</p>
         <div class="hero-cta hero-anim" style="--d:5">
@@ -91,7 +102,7 @@
             <p class="term-line hero-anim" style="--d:4"><span class="term-arrow">&rarr;</span> <span class="term-cmd">~ pip list | grep -iE "langchain|azure|opencv|torch"</span></p>
             <p class="term-out hero-anim" style="--d:4.3">langchain, azure-openai, opencv, torch &check;</p>
             <p class="term-line hero-anim" style="--d:5"><span class="term-arrow">&rarr;</span> <span class="term-cmd">~ cat ~/.config/profile.json | jq ".focus"</span></p>
-            <p class="term-out hero-anim" style="--d:5.3">"Generative AI + Computer Vision"</p>
+            <p class="term-out hero-anim" style="--d:5.3">"Machine Learning + Generative AI + Computer Vision"</p>
             <p class="term-line hero-anim" style="--d:6"><span class="term-arrow">&rarr;</span> <span class="term-cmd">~ systemctl status ai_pipeline.service</span></p>
             <p class="term-out hero-anim" style="--d:6.3">active (running) - 7 deployments</p>
             <p class="term-line hero-anim" style="--d:7"><span class="term-arrow">&rarr;</span> <span class="term-cmd">~</span><span class="cursor"></span></p>
@@ -116,9 +127,9 @@
           <span class="readme-file">- README.md</span>
         </div>
         <p class="readme-bio">
-          AI/ML Engineer specializing in production Generative AI and Computer Vision at Sigma Solve.
-          Experienced in building RAG systems, fine-tuned LLMs, backend AI services, and real-time
-          computer vision applications that solve real business problems.
+          I'm an AI/ML Engineer. Most days that means taking something from raw data to a trained model
+          to a service actually running in production: RAG pipelines, fine-tuned LLMs, classical ML,
+          computer vision, whatever the problem actually calls for over whatever's fashionable.
         </p>
         <div class="readme-block">
           <p class="readme-label"># philosophy</p>
@@ -127,7 +138,7 @@
         <div class="readme-block">
           <p class="readme-label"># core_domains</p>
           <div class="domain-tags">
-            <span>Python</span><span>Generative AI</span><span>Computer Vision</span><span>LLM Engineering</span><span>Data Analysis</span>
+            <span>Python</span><span>Machine Learning</span><span>Generative AI</span><span>Computer Vision</span><span>LLM Engineering</span><span>Data Analysis</span>
           </div>
         </div>
       </div>
@@ -140,7 +151,7 @@
       <h2 class="sec-title"><span class="sec-index">02</span><span class="sec-slash">/</span>Skills</h2>
       <div class="sec-rule"><span class="sec-rule-line"></span><span class="sec-log">tools & technologies</span></div>
     </div>
-    <p class="section-lede">Stack, grouped by system level, from model frameworks down to the infra that serves them.</p>
+    <p class="section-lede">Everything I reach for, from model frameworks down to the infra that keeps them running.</p>
 
     <div class="skill-grid reveal">
 
@@ -169,13 +180,17 @@
           <span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="1.5"/><rect x="9.5" y="9.5" width="5" height="5"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg></span>
           <div class="skill-head-text">
             <span class="skill-label">machine_learning</span>
-            <span class="skill-count">8 modules</span>
+            <span class="skill-count">12 modules</span>
           </div>
         </div>
         <ul class="skill-list">
           <li><span class="skill-dot"></span>TensorFlow</li>
           <li><span class="skill-dot"></span>PyTorch</li>
+          <li><span class="skill-dot"></span>scikit-learn</li>
+          <li><span class="skill-dot"></span>XGBoost / LightGBM</li>
           <li><span class="skill-dot"></span>OpenCV</li>
+          <li><span class="skill-dot"></span>MediaPipe</li>
+          <li><span class="skill-dot"></span>DeepFace</li>
           <li><span class="skill-dot"></span>Image Segmentation</li>
           <li><span class="skill-dot"></span>Real-time Video Processing</li>
           <li><span class="skill-dot"></span>NLP</li>
@@ -221,7 +236,7 @@
           <span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg></span>
           <div class="skill-head-text">
             <span class="skill-label">data_tools</span>
-            <span class="skill-count">7 modules</span>
+            <span class="skill-count">8 modules</span>
           </div>
         </div>
         <ul class="skill-list">
@@ -229,6 +244,7 @@
           <li><span class="skill-dot"></span>NumPy</li>
           <li><span class="skill-dot"></span>Seaborn</li>
           <li><span class="skill-dot"></span>Matplotlib</li>
+          <li><span class="skill-dot"></span>D3.js</li>
           <li><span class="skill-dot"></span>SQL</li>
           <li><span class="skill-dot"></span>PostgreSQL</li>
           <li><span class="skill-dot"></span>MongoDB</li>
@@ -240,13 +256,14 @@
           <span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6M15 2v6"/><path d="M7 8h10v3a5 5 0 0 1-5 5 5 5 0 0 1-5-5V8z"/><path d="M12 16v6"/></svg></span>
           <div class="skill-head-text">
             <span class="skill-label">integrations</span>
-            <span class="skill-count">4 modules</span>
+            <span class="skill-count">5 modules</span>
           </div>
         </div>
         <ul class="skill-list">
-          <li><span class="skill-dot"></span>Salesforce (SOQL, JWT)</li>
+          <li><span class="skill-dot"></span>Salesforce</li>
           <li><span class="skill-dot"></span>Odoo</li>
           <li><span class="skill-dot"></span>Crawlee</li>
+          <li><span class="skill-dot"></span>Playwright</li>
           <li><span class="skill-dot"></span>Web Scraping</li>
         </ul>
       </div>
@@ -270,12 +287,13 @@
         </div>
         <p class="exp-company">Sigma Solve Inc., Ahmedabad · Full-time</p>
         <ul>
-          <li>Built production RAG pipelines and fine-tuned LLMs on Azure OpenAI using LangChain, LangGraph and LlamaIndex.</li>
-          <li>Worked on Machine Learning, Deep Learning and NLP: model training, evaluation and fine-tuning with TensorFlow, PyTorch, BERT and DistilBERT.</li>
-          <li>Built real-time Computer Vision applications with YOLO and OpenCV, and explored generative video and AI avatar/motion-generation technologies.</li>
-          <li>Developed backend services with Django, FastAPI, Celery/Celery Beat, Docker and RabbitMQ, deployed through GitLab CI/CD.</li>
-          <li>Integrated Salesforce (SOQL, JWT auth), Shopify and Odoo via REST APIs, with automated data collection using Crawlee.</li>
-          <li>Used Pandas, NumPy, SQL/PostgreSQL and MongoDB for data processing, with Git-based version control and Agile practices.</li>
+          <li>Fine-tune and deploy LLMs, building RAG pipelines with LangChain, LangGraph and Azure OpenAI.</li>
+          <li>Train and evaluate machine learning and deep learning models across NLP and other domains.</li>
+          <li>Build real-time computer vision systems for production use cases.</li>
+          <li>Develop and deploy backend services with Django and FastAPI, through GitLab CI/CD.</li>
+          <li>Integrate third-party platforms like Salesforce, Shopify and Odoo, and handle the data pipelines behind it all.</li>
+          <li>Explore emerging generative AI techniques, from video generation to AI avatars.</li>
+          <li>Process and analyze data with Pandas, NumPy and SQL, following Git-based version control in an Agile workflow.</li>
         </ul>
       </div>
 
@@ -545,27 +563,39 @@
     <div class="syslog-table reveal">
       <div class="syslog-row">
         <span class="syslog-no">01</span>
-        <span class="syslog-name">moodytunes</span>
-        <span class="syslog-desc">Webcam-based real-time emotion detection feeding mood-matched song suggestions.</span>
-        <span class="syslog-stack">Python · Django · CV</span>
+        <a class="syslog-name" href="https://github.com/hridasha/MoodyTunes" target="_blank" rel="noopener">moodytunes</a>
+        <span class="syslog-desc">A Django app that reads your mood from your webcam or the text you type, then pulls up songs to match it.</span>
+        <span class="syslog-stack">Python · Django · DeepFace</span>
       </div>
       <div class="syslog-row">
         <span class="syslog-no">02</span>
-        <span class="syslog-name">yoga_correction</span>
-        <span class="syslog-desc">Real-time recognition &amp; correction of 35 poses, with live speech guidance.</span>
-        <span class="syslog-stack">Python · OpenCV</span>
+        <a class="syslog-name" href="https://github.com/hridasha/Yoga-pose-correction-system" target="_blank" rel="noopener">yoga_correction</a>
+        <span class="syslog-desc">Real-time yoga pose recognition and correction, using pose landmarks to give live feedback as you move.</span>
+        <span class="syslog-stack">Python · Django · FastAPI · MediaPipe</span>
       </div>
       <div class="syslog-row">
         <span class="syslog-no">03</span>
-        <span class="syslog-name">library_mgmt</span>
+        <a class="syslog-name" href="https://github.com/hridasha/Library-Management-System" target="_blank" rel="noopener">library_mgmt</a>
         <span class="syslog-desc">Customized Odoo modules for cataloging and borrowing workflows.</span>
         <span class="syslog-stack">Python · Odoo</span>
       </div>
       <div class="syslog-row">
         <span class="syslog-no">04</span>
-        <span class="syslog-name">rto_monitoring</span>
-        <span class="syslog-desc">Document tracking system for an RTO office with secure login &amp; record-keeping.</span>
-        <span class="syslog-stack">Java · MySQL</span>
+        <a class="syslog-name" href="https://github.com/hridasha/Drowsiness-detection" target="_blank" rel="noopener">drowsiness_detection</a>
+        <span class="syslog-desc">Real-time drowsiness and yawn detection from a webcam feed, using face tracking to flag when you need a break.</span>
+        <span class="syslog-stack">Python · FastAPI · MediaPipe</span>
+      </div>
+      <div class="syslog-row">
+        <span class="syslog-no">05</span>
+        <a class="syslog-name" href="https://github.com/hridasha/Paper-Graph" target="_blank" rel="noopener">papergraph</a>
+        <span class="syslog-desc">Turns research papers into a queryable knowledge graph, using an LLM to extract how the concepts relate to each other.</span>
+        <span class="syslog-stack">Python · FastAPI · LLM · D3.js</span>
+      </div>
+      <div class="syslog-row">
+        <span class="syslog-no">06</span>
+        <a class="syslog-name" href="https://github.com/hridasha/browser-automation" target="_blank" rel="noopener">browser_automation</a>
+        <span class="syslog-desc">A multi-agent LangGraph workflow that takes a plain-English goal and handles the web research itself, browsing with Playwright and pulling out structured data via an LLM.</span>
+        <span class="syslog-stack">Python · LangGraph · Playwright</span>
       </div>
     </div>
   </section>
@@ -659,6 +689,31 @@
       <div id="projectModalDetail"></div>
     </div>
   </div>
+</div>
+
+<!-- AI AGENT WIDGET -->
+<button type="button" class="agent-toggle" id="agentToggle" aria-label="Open site assistant" aria-expanded="false">
+  <svg class="agent-icon-bot" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8V4"/><circle cx="12" cy="3" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="14" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1.2" fill="currentColor" stroke="none"/><path d="M2 12h2M20 12h2"/></svg>
+  <svg class="agent-icon-close" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  <span class="agent-toggle-badge" id="agentBadge">1</span>
+</button>
+
+<div class="agent-panel" id="agentPanel">
+  <div class="term-bar">
+    <div class="term-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+    <span class="term-title">ask_hridasha.sh</span>
+    <span class="agent-status"><span class="ping-dot" aria-hidden="true"></span>online</span>
+    <button type="button" class="agent-close" id="agentCloseBtn" aria-label="Close chat">&#10005;</button>
+  </div>
+  <div class="agent-body" id="agentBody"></div>
+  <div class="agent-quick" id="agentQuick"></div>
+  <form class="agent-input-row" id="agentForm">
+    <span class="agent-prompt">$</span>
+    <input type="text" id="agentInput" placeholder="ask about skills, projects, resume..." autocomplete="off" />
+    <button type="submit" class="agent-send" aria-label="Send">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+  </form>
 </div>
 
 <script src="script.js"></script>
