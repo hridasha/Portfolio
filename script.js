@@ -1,3 +1,5 @@
+document.documentElement.classList.remove('no-js');
+
 // ---- footer year ----
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -6,7 +8,13 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 // ---- splash screen cleanup ----
 const splashScreen = document.getElementById('splashScreen');
 if (splashScreen) {
-  splashScreen.addEventListener('animationend', () => splashScreen.remove());
+  if (sessionStorage.getItem('splashSeen')) {
+    splashScreen.remove();
+  } else {
+    sessionStorage.setItem('splashSeen', '1');
+    splashScreen.addEventListener('animationend', () => splashScreen.remove());
+    splashScreen.addEventListener('click', () => splashScreen.remove());
+  }
 }
 
 // ---- hero role cycler (typewriter) ----
@@ -124,16 +132,26 @@ if (navSections.length) {
 }
 
 // ---- reveal on scroll ----
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('in-view');
-      io.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.15 });
+const revealEls = document.querySelectorAll('.reveal');
 
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+  // no motion, or no IO support: show everything immediately
+  revealEls.forEach(el => el.classList.add('in-view'));
+} else {
+  // large top rootMargin: reveal fires while the section is still below
+  // the fold, so a fast scroll (flick, anchor-link jump, "find on page")
+  // never outruns the animation and shows a blank gap
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0, rootMargin: '400px 0px -5% 0px' });
+
+  revealEls.forEach(el => io.observe(el));
+}
 
 // ---- systems filter tabs ----
 const filterTabs = document.querySelectorAll('.filter-tab');
@@ -152,7 +170,6 @@ filterTabs.forEach(tab => {
 
 // ---- project detail modal ----
 const projectModal = document.getElementById('projectModal');
-const projectModalId = document.getElementById('projectModalId');
 const projectModalTitle = document.getElementById('projectModalTitle');
 const projectModalRole = document.getElementById('projectModalRole');
 const projectModalDetail = document.getElementById('projectModalDetail');
@@ -165,7 +182,6 @@ function openProjectModal(card) {
   detail.parentNode.insertBefore(placeholder, detail);
   activeDetailHome = { detail, placeholder };
 
-  projectModalId.textContent = card.querySelector('.pl-id').textContent;
   projectModalTitle.textContent = card.querySelector('h3').textContent;
   projectModalRole.textContent = card.querySelector('.pl-role').textContent;
   detail.classList.add('detail-open');
@@ -310,7 +326,7 @@ contactForm.addEventListener('submit', async (e) => {
     {
       id: 'projects',
       keywords: ['project', 'built', 'shipped', 'portfolio', 'apps', 'systems'],
-      answer: "I've shipped seven systems on the job, from an email-prioritization NLP model to a race-video computer vision pipeline, plus personal projects like MoodyTunes and PaperGraph.",
+      answer: "On the job I've built and shipped systems from an email-prioritization NLP model to a race-video computer vision pipeline. On my own time: Deskmate (a multi-agent AI office), EvalKit (a test suite for AI apps), Tapedeck (API record, mock and replay), plus PaperGraph and more.",
       link: { href: '#systems', label: 'View projects ↓' }
     },
     {
@@ -468,7 +484,7 @@ contactForm.addEventListener('submit', async (e) => {
 
   const detailAnswers = {
     projects: {
-      text: "On the job: email-prioritization NLP, an emotion-aware avatar generator, generative video/motion research, a race-video computer vision pipeline, real-time Shopify-to-Odoo sync, compliance red-flag automation, and an LLM-based sales-role classifier. On my own time: MoodyTunes, a yoga pose corrector, drowsiness detection, PaperGraph, and a LangGraph browser-automation agent.",
+      text: "On the job: email-prioritization NLP, an emotion-aware avatar generator, generative video/motion research, a race-video computer vision pipeline, real-time Shopify-to-Odoo sync, compliance red-flag automation, and an LLM-based sales-role classifier. On my own time: Deskmate (a team of AI agents in a 3D office with cited answers over your documents), EvalKit (scores AI app answers and gates CI on quality), Tapedeck (record an API once, then mock, replay and load-test it), MoodyTunes, a yoga pose corrector, drowsiness detection, PaperGraph, and a LangGraph browser-automation agent.",
       link: { href: '#systems', label: 'View projects ↓' }
     },
     experience: {

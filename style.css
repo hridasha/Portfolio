@@ -6,7 +6,7 @@
   --grid-line-bright: #2D3B52;
   --text: #E7ECF3;
   --text-dim: #94A3B8;
-  --text-faint: #56657D;
+  --text-faint: #7B8AA3;
   --accent: #34D399;
   --accent-dim: #1F8F6C;
   --accent-amber: #F5A623;
@@ -280,6 +280,11 @@ code, pre{ font-family: var(--ff-mono); }
 
 .reveal{ opacity:0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.in-view{ opacity:1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity:1; transform:none; transition:none; }
+}
+/* if JS never runs (blocked, fails, disabled), content must not stay invisible */
+.no-js .reveal{ opacity:1; transform:none; }
 
 /* ---------- ABOUT / README PANEL ---------- */
 .about-grid{ display:grid; grid-template-columns: 1fr; gap: 24px; align-items:start; }
