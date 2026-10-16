@@ -798,3 +798,43 @@ a.contact-row:active, button.contact-row:active{ background: var(--bg-inset); }
   .agent-quick{ padding:2px 20px 16px; }
   .agent-input-row{ padding:14px 18px; padding-bottom: max(14px, env(safe-area-inset-bottom)); }
 }
+
+
+/* ---------- ACCESSIBILITY + UPDATED MARKUP SAFETY ---------- */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.splash-screen {
+  appearance: none;
+  width: 100%;
+  border: 0;
+  padding: 24px;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.copy-btn {
+  font: inherit;
+  cursor: pointer;
+}
+
+.copy-btn:focus-visible,
+.burger:focus-visible,
+.agent-toggle:focus-visible,
+.modal-close:focus-visible {
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

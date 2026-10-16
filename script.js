@@ -1,25 +1,44 @@
 document.documentElement.classList.remove('no-js');
 
 // ---- footer year ----
-document.getElementById('year').textContent = new Date().getFullYear();
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 
 // ---- splash screen cleanup ----
 const splashScreen = document.getElementById('splashScreen');
 if (splashScreen) {
-  if (sessionStorage.getItem('splashSeen')) {
+  let splashSeen = false;
+  try {
+    splashSeen = sessionStorage.getItem('splashSeen') === '1';
+    if (!splashSeen) sessionStorage.setItem('splashSeen', '1');
+  } catch (_) {
+    // If storage is unavailable, the intro still works for this page view.
+  }
+
+  if (splashSeen || prefersReducedMotion) {
     splashScreen.remove();
   } else {
-    sessionStorage.setItem('splashSeen', '1');
-    splashScreen.addEventListener('animationend', () => splashScreen.remove());
-    splashScreen.addEventListener('click', () => splashScreen.remove());
+    splashScreen.addEventListener('animationend', (event) => {
+      if (event.target === splashScreen && event.animationName === 'splashOut') {
+        splashScreen.remove();
+      }
+    });
+    const dismissSplash = () => splashScreen.remove();
+    splashScreen.addEventListener('click', dismissSplash, { once: true });
+    splashScreen.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        dismissSplash();
+      }
+    });
   }
 }
 
 // ---- hero role cycler (typewriter) ----
 const roleCycler = document.getElementById('roleCycler');
-const roles = ['AI/ML Engineer', 'RAG Systems Builder', 'Computer Vision Engineer'];
+const roles = ['AI/ML Engineer', 'LLM Systems Engineer', 'AI Agent Developer', 'Computer Vision Engineer'];
 
 if (roleCycler) {
   if (prefersReducedMotion) {
@@ -91,29 +110,37 @@ const nav = document.getElementById('nav');
 const burger = document.getElementById('burger');
 const navLinks = document.getElementById('navLinks');
 
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 10);
-}, { passive: true });
+if (nav) {
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+}
 
 // ---- scroll to top ----
 const scrollTopBtn = document.getElementById('scrollTop');
-window.addEventListener('scroll', () => {
-  scrollTopBtn.classList.toggle('visible', window.scrollY > 600);
-}, { passive: true });
-scrollTopBtn.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
-});
-
-burger.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
-  burger.setAttribute('aria-expanded', String(open));
-});
-navLinks.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    burger.setAttribute('aria-expanded', 'false');
+if (scrollTopBtn) {
+  window.addEventListener('scroll', () => {
+    scrollTopBtn.classList.toggle('visible', window.scrollY > 600);
+  }, { passive: true });
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
   });
-});
+}
+
+if (burger && navLinks) {
+  burger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      burger.setAttribute('aria-label', 'Open menu');
+    });
+  });
+}
 
 // ---- nav active-section highlight ----
 const navAnchors = navLinks.querySelectorAll('a[data-section]');
@@ -361,7 +388,7 @@ contactForm.addEventListener('submit', async (e) => {
     {
       id: 'education',
       keywords: ['education', 'degree', 'college', 'university', 'study', 'school'],
-      answer: "B.Tech in Information & Communication Technology from Ganpat University (2022–2025), CGPA 8.22."
+      answer: "B.Tech in Information & Communication Technology at Ganpat University. CGPA: 8.09. Currently pursuing the degree."
     },
     {
       id: 'about',
@@ -492,7 +519,7 @@ contactForm.addEventListener('submit', async (e) => {
       link: { href: '#experience', label: 'View experience ↓' }
     },
     skills: {
-      text: "Grouped into six areas on the site: LLM/GenAI engineering, core Machine Learning, backend services, infrastructure, data tooling, and integrations, over a dozen tools deep in ML alone (TensorFlow, PyTorch, scikit-learn, XGBoost, OpenCV, MediaPipe, DeepFace...).",
+      text: "Grouped into six areas: LLM and agent engineering, machine learning and computer vision, backend services and APIs, infrastructure and quality, data and databases, and integrations and automation. Key tools include LangChain, LangGraph, TensorFlow, PyTorch, scikit-learn, XGBoost, OpenCV, MediaPipe, DeepFace, FastAPI, Django, PostgreSQL, Docker and RabbitMQ.",
       link: { href: '#stack', label: 'View skills ↓' }
     },
     about: {
